@@ -38,6 +38,7 @@
         </thead>
         <tbody>
             <?php foreach ($gawe as $key => $value) : ?>
+            <!-- <?= var_dump($value); ?> -->
             <tr>
                 <th><?= $key= +1; ?></th>
                 <td><?= $value->name_gawe; ?></td>
