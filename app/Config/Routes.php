@@ -44,28 +44,11 @@ $routes->get('gawe/edit/(:num)', 'Gawe::edit/$1');
 $routes->put('gawe/(:num)', 'Gawe::update/$1');
 $routes->delete('gawe/delete/(:num)', 'Gawe::destroy/$1');
 
-
 $routes->get('find', 'Find::index');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+$routes->get('login', 'Auth::index');
 
 $routes->get('home', 'Home::generate');
-
-$routes->get('login', 'Auth::login');
-
-$routes->post('auth/loginprocess', 'Auth::login');
 
 /*
  * --------------------------------------------------------------------

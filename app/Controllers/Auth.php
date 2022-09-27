@@ -2,16 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Auth extends BaseController
 {
-    public function index(){
+    protected $model;
+
+    public function __construct()
+    {
+        $this->model = new UserModel();
+        $this->helpers = ['form', 'url'];
     }
 
-    public function login(){
+    public function index()
+    {
+
         return view('auth/login');
-    }
-
-    public function loginprocess(){
-        echo "Selamat login";
     }
 }

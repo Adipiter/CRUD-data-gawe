@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
  
 use CodeIgniter\Model;
  
@@ -10,5 +12,11 @@ class UserModel extends Model
     {
         return $this->findAll();
     }
- 
+	
+    public function getData(){
+        $builder = $this->db->table('users');
+        $data = $builder->get()->getResult();
+        return $data;
+    }
+
 }

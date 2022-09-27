@@ -9,15 +9,15 @@
 </head>
 <body>
     <div class="container">
-        <form action="<?= base_url('auth/loginprocess');?>" method="post">
-        <?= csrf_field() ?>
+        <form action="" method="post">
+            <?= csrf_field() ?>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="name_gawe" class="form-control">
+                <input type="email" name="name_user" class="form-control">
             </div>
             <div class="form-group">
                 <label>password</label>
-                <input type="password" name="name_gawe" class="form-control">
+                <input type="password" name="password_user" class="form-control">
             </div>
 
             <div class="text-center">
