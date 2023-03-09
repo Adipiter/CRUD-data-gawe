@@ -46,7 +46,11 @@ $routes->delete('gawe/delete/(:num)', 'Gawe::destroy/$1');
 
 $routes->get('find', 'Find::index');
 
-$routes->get('login', 'Auth::index');
+$routes->match(['get', 'post'], 'register', 'Auth::register');
+
+$routes->match(['get', 'post'], 'login', 'Auth::authenticate');
+
+$routes->get('dashboard', 'Auth::index');
 
 $routes->get('home', 'Home::generate');
 
