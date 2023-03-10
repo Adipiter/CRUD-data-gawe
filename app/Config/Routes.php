@@ -48,9 +48,12 @@ $routes->get('find', 'Find::index');
 
 $routes->match(['get', 'post'], 'register', 'Auth::register');
 
-$routes->match(['get', 'post'], 'login', 'Auth::authenticate');
+$routes->get('login', 'Auth::login');
+$routes->post('login', 'Auth::authenticate');
 
-$routes->get('dashboard', 'Auth::index');
+$routes->get('logout', 'Auth::logout');
+
+$routes->get('dashboard', 'Dashboard::index');
 
 $routes->get('home', 'Home::generate');
 

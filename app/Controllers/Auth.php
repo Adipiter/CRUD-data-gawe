@@ -36,7 +36,7 @@ class Auth extends BaseController
                 'password_user' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];
             $model->save($dataForm); // Save data dari hasil tangtkapan ke model
-            return redirect()->to('auth/login'); // redirect ke 'auth/login' jika berhasil
+            return redirect()->to('login'); // redirect ke 'auth/login' jika berhasil
         }else{
             // Jika gagal
             $data['validation'] = $this->validator;
@@ -46,9 +46,66 @@ class Auth extends BaseController
         return view('auth/register', $data);
     }
 
-    public function authenticate()
-    {
+    public function login(){
         return view('auth/login');
     }
+
+    public function authenticate(){
+        // Mendapatkan input dari form login
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        // Melakukan validasi pada input
+        $validation = $this->validate([
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[4]'
+        ]);
+
+        if (!$validation) {
+            // Jika validasi gagal, kembali ke halaman login dengan error
+            session()->setFlashdata('error', 'Invalid email or password');
+            return redirect()->to('login')->withInput();
+        }
+
+        // Mencari user dengan email yang diberikan
+        $model = new AuthModel();
+        $user = $model->where('email_user', $email)->first();
+
+        if (!$user) {
+            // Jika data validasi tidak ditemukan, kembali ke halaman login dengan error
+            session()->setFlashdata('error', 'Invalid email or password');
+            return redirect()->back()->withInput();
+        }
+
+        // Memeriksa apakah password yang diberikan sesuai dengan yang tersimpan di database
+        if (!password_verify($password, $user['password_user'])) {
+            // Jika password tidak sesuai, kembali ke halaman login dengan error
+            session()->setFlashdata('error', 'Invalid email or password');
+            return redirect()->back()->withInput();
+        }
+
+        // Jika user ditemukan dan password sesuai, buat session dan redirect ke halaman dashboard
+        session()->set([
+            'iduser' => $user['id_user'],
+            'email' => $user['email_user'],
+            'username' => $user['name_user'],
+            'logged_in' => true
+        ]);
+
+        return redirect()->to('dashboard'); // ini redirect nya
+    }
+
+    // Hapus data session
+    public function logout() {
+        session()->remove([
+            'iduser',
+            'email',
+            'username',
+            'logged_in'
+        ]);
+
+        return redirect()->to('login');
+    }
+
 }
 

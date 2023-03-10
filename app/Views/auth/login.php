@@ -9,15 +9,22 @@
 </head>
 <body>
     <div class="container">
-        <form action="" method="post">
+
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php endif; ?>
+
+        <form action="<?php echo base_url('/login'); ?>" method="post">
             <?= csrf_field() ?>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="name_user" class="form-control">
+                <input type="email" name="email" class="form-control">
             </div>
             <div class="form-group">
                 <label>password</label>
-                <input type="password" name="password_user" class="form-control">
+                <input type="password" name="password" class="form-control">
             </div>
 
             <div class="text-center">
