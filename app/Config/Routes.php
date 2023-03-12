@@ -48,6 +48,8 @@ $routes->get('find', 'Find::index');
 
 $routes->match(['get', 'post'], 'register', 'Auth::register');
 
+$routes->match(['get', 'post'], 'loginquery', 'Auth::login_query');
+
 $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::authenticate');
 

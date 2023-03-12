@@ -95,6 +95,20 @@ class Auth extends BaseController
         return redirect()->to('dashboard'); // ini redirect nya
     }
 
+    //Mengikuti Query builder Model
+    public function login_query(){
+        $model = new AuthModel();
+        $table = 'users';
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+        $row = $model->get_data_login($email, $table);
+
+        if ($row == NULL) {
+            session()->setFlashdata('error', 'email anda salah');
+            return redirect()->back()->withInput();
+        }
+    }
+
     // Hapus data session
     public function logout() {
         session()->remove([

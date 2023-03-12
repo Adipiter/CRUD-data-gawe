@@ -39,4 +39,12 @@ class AuthModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // Cara kedua kita bisa menggunakan query builder
+    public function get_data_login($email, $tbl){
+        $builder = $this->db->table($tbl);
+        $builder->where('email_user', $email);
+        $log =  $builder->get()->getRow();
+        return $log;
+    }
 }
