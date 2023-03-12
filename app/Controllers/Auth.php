@@ -105,8 +105,19 @@ class Auth extends BaseController
 
         if ($row == NULL) {
             session()->setFlashdata('error', 'email anda salah');
-            return redirect()->back()->withInput();
+            return redirect()->to('loginquery');
         }
+        if (password_verify($password, $row->password)) {
+            $data = array(
+                'log' => TRUE,
+                'email' => $row->email_user,
+            );
+            session()->set($data);
+            session()->setFlashdata('success', 'Logged in');
+            return redirect()->to('/dashboard');
+        }
+        session()->setFlashdata('success', 'Password salah');
+        return redirect()->to('loginquery');
     }
 
     // Hapus data session
