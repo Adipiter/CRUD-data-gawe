@@ -60,6 +60,8 @@ $routes->get('dashboard', 'Dashboard::index');
 
 $routes->get('home', 'Home::generate');
 
+/** Membuat route untuk menerima data dari luar */
+$routes->get('wibupage', 'Apidata::terimadata');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
