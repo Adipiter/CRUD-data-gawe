@@ -7,6 +7,20 @@
     <title>Pustaka code</title>
 </head>
 <body>
-    <a href="wibupage">Wibu page</a>
+    <ol>Biasa</ol>
+    <ul>
+        <li><a href="gawe">Gawe</a></li>
+        <li><a href="find">Find</a></li>
+        <li><a href="wibupage">Wibu page</a></li>
+        <li><a href="parshing">Parshing data</a></li>
+    </ul>
+    
+    <ol>CRUD Sederhana</ol>
+    <ul>
+        <li><a href="register">Register</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="logout">Logout</a></li>
+    </ul>
 </body>
 </html>
