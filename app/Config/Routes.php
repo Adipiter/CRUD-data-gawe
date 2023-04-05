@@ -63,6 +63,8 @@ $routes->get('home', 'Home::generate');
 /** Membuat route untuk menerima data dari luar */
 $routes->get('wibupage', 'Apidata::terimadata');
 $routes->get('wibupage2', 'Apidata::getContents');
+
+$routes->get('parshing', 'Dummydata::select');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
