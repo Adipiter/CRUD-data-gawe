@@ -5,12 +5,6 @@ namespace Config;
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
-// Load the system's routing file first, so that the app and ENVIRONMENT
-// can override as needed.
-if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
-}
-
 /*
  * --------------------------------------------------------------------
  * Router Setup
@@ -65,6 +59,7 @@ $routes->get('wibupage', 'Apidata::terimadata');
 $routes->get('wibupage2', 'Apidata::getContents');
 
 $routes->get('parshing', 'Dummydata::select');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
