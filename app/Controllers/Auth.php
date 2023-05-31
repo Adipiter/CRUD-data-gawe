@@ -131,6 +131,5 @@ class Auth extends BaseController
 
         return redirect()->to('login');
     }
-
 }
 

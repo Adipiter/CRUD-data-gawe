@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 /** Untuk menerima data dari luar,
- * gunakan libhrary bawaan CI4 ResponseTrait */
+ * gunakan library bawaan CI4 ResponseTrait */
 use CodeIgniter\API\ResponseTrait;
+
 use App\Controllers\BaseController;
 
 class Apidata extends BaseController{

@@ -60,6 +60,9 @@ $routes->get('wibupage2', 'Apidata::getContents');
 
 $routes->get('parshing', 'Dummydata::select');
 
+/** Membuat route untuk melakukan curl */
+$routes->get('saldo', 'Digiflazz::ceksaldo');
+$routes->get('digi', 'Digiflazz::daftarlayanan');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
