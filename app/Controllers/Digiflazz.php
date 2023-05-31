@@ -9,8 +9,8 @@ class Digiflazz extends BaseController
     public function ceksaldo(){
         $url = "https://api.digiflazz.com/v1/cek-saldo";
         $comand = "deposit";
-        $username = "cazekoD7ELKg";
-        $apikey = "a3bd1141-63f8-5885-9d9a-c52bbcf2c97b";
+        $username = "xxxxxxxx";
+        $apikey = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
         $signature = md5($username . $apikey . "depo");
 
         $data = array(
