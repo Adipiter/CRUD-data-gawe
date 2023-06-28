@@ -63,6 +63,9 @@ $routes->get('parshing', 'Dummydata::select');
 /** Membuat route untuk melakukan curl */
 $routes->get('saldo', 'Digiflazz::ceksaldo');
 $routes->get('digi', 'Digiflazz::daftarlayanan');
+
+/** Membuat route untuk melakukan join 2 table dan menampilkan ke layar */
+$routes->get('joindata', 'Joindata::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -22,7 +22,7 @@
 
     <?php if(session()->getFlashdata('error')): ?>
     <div class="alert alert-danger" role="alert">
-        Error!
+        Error, ada masalah!
     </div>
     <?php endif; ?>
 
