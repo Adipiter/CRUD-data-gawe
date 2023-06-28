@@ -14,4 +14,15 @@ class Joindata extends BaseController
         dd($hasil);
         return view('jointable/join');
     }
+
+    public function select()
+    {
+        $builder = $this->db->table('tablesatu');
+        $builder->select('tablesatu.id_usr, tablesatu.nama_orang, tablesatu.email, tabledua.nama_hobi');
+        $builder->join('tabledua', 'tabledua.id = tablesatu.hobi');
+        $data = $builder->get()->getResult();
+
+        dd($data);
+        return view('jointable/select');
+    }
 }

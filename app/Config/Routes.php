@@ -65,7 +65,8 @@ $routes->get('saldo', 'Digiflazz::ceksaldo');
 $routes->get('digi', 'Digiflazz::daftarlayanan');
 
 /** Membuat route untuk melakukan join 2 table dan menampilkan ke layar */
-$routes->get('joindata', 'Joindata::index');
+$routes->get('joindata-all', 'Joindata::index');
+$routes->get('joindata-select', 'Joindata::select');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
