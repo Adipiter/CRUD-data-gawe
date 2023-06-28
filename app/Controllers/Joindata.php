@@ -32,7 +32,7 @@ class Joindata extends BaseController
         */
         $builder->select('tablesatu.id_usr, tablesatu.nama_orang, tablesatu.email, tabledua.nama_hobi');
         
-        //  Melakukan join pada table kedua
+        //  Melakukan join pada table satu dan dua
         $builder->join('tabledua', 'tabledua.id = tablesatu.hobi');
 
         //  Menangkap hasilnya dengan methode getResult
