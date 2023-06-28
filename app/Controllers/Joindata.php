@@ -8,21 +8,37 @@ class Joindata extends BaseController
 {
     public function index()
     {
+        //  Mendeklarasikan table mana yang akan di abstraksikan.
         $builder = $this->db->table('tablesatu');
+
+        //  Melakukan join pada table kedua
         $builder->join('tabledua', 'tabledua.id = tablesatu.hobi');
-        $hasil = $builder->get()->getResult();
-        dd($hasil);
+
+        //  Menangkap hasilnya dengan methode getResult
+        $query = $builder->get()->getResult();
+        dd($query);
         return view('jointable/join');
     }
 
     public function select()
     {
+        //  Mendeklarasikan table mana yang akan di abstraksikan.
         $builder = $this->db->table('tablesatu');
-        $builder->select('tablesatu.id_usr, tablesatu.nama_orang, tablesatu.email, tabledua.nama_hobi');
-        $builder->join('tabledua', 'tabledua.id = tablesatu.hobi');
-        $data = $builder->get()->getResult();
 
-        dd($data);
+        /*
+            Pada cara yang ini kita melakukan "select" pada field di tablesatu.
+            Kita dapat menyeleksi nya dengan format 'nama_table.namafield', gunakan tanda "."
+            select pada kedua table.
+        */
+        $builder->select('tablesatu.id_usr, tablesatu.nama_orang, tablesatu.email, tabledua.nama_hobi');
+        
+        //  Melakukan join pada table kedua
+        $builder->join('tabledua', 'tabledua.id = tablesatu.hobi');
+
+        //  Menangkap hasilnya dengan methode getResult
+        $query = $builder->get()->getResult();
+
+        dd($query);
         return view('jointable/select');
     }
 }
