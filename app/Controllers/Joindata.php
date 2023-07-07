@@ -12,7 +12,7 @@ class Joindata extends BaseController
         $builder = $this->db->table('tablesatu');
 
         //  Melakukan join pada table kedua
-        $builder->join('tabledua', 'tabledua.id = tablesatu.hobi');
+        $builder->join('tabledua', 'tabledua.id_tbl_dua = tablesatu.hobi');
 
         //  Menangkap hasilnya dengan methode getResult
         $query = $builder->get()->getResult();
@@ -30,10 +30,10 @@ class Joindata extends BaseController
             Kita dapat menyeleksi nya dengan format 'nama_table.namafield', gunakan tanda "."
             select pada kedua table.
         */
-        $builder->select('tablesatu.id_usr, tablesatu.nama_orang, tablesatu.email, tabledua.nama_hobi');
+        $builder->select('tablesatu.id_tbl_satu, tablesatu.nama_orang, tablesatu.email, tabledua.nama_hobi');
         
         //  Melakukan join pada table satu dan dua
-        $builder->join('tabledua', 'tabledua.id = tablesatu.hobi');
+        $builder->join('tabledua', 'tabledua.id_tbl_dua = tablesatu.hobi');
 
         //  Menangkap hasilnya dengan methode getResult
         $query = $builder->get()->getResult();

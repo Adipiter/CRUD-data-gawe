@@ -13,6 +13,7 @@
         <li><a href="find">Find</a></li>
         <li><a href="wibupage">Wibu page</a></li>
         <li><a href="parshing">Parshing data</a></li>
+        <li><a href="joindata-all">Join table</a></li>
     </ul>
     
     <ol>CRUD Sederhana</ol>
