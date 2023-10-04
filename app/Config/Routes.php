@@ -67,6 +67,11 @@ $routes->get('digi', 'Digiflazz::daftarlayanan');
 /** Membuat route untuk melakukan join 2 table dan menampilkan ke layar */
 $routes->get('joindata-all', 'Joindata::index');
 $routes->get('joindata-select', 'Joindata::select');
+
+/** Membuat route untuk Upload data, misalnya gambar */
+$routes->get('upload', 'Upload::index');
+$routes->post('upload/upload', 'Upload::upload');
+$routes->post('upload/upload-permit-empty', 'Upload::uploadPermitEmpty');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
