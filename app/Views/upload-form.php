@@ -17,7 +17,7 @@
         </div>
     <?php endif; ?>
 
-    <form action="<?php echo base_url('upload/upload'); ?>" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    <form action="<?php echo base_url('upload'); ?>" method="post" enctype="multipart/form-data" accept-charset="utf-8">
         <input type="file" name="userfile" size="20">
         <br><br>
         <input type="submit" value="upload">
