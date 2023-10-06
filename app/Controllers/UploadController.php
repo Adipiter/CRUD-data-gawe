@@ -50,7 +50,7 @@ class UploadController extends BaseController
         return redirect()->to('upload');
         */
 
-        /*  Versi #2
+        /*  Versi #2*/
         if (!$this->validate($validationRule)) {
             return view('upload-form', ['errors' => $this->validator->getErrors()]);
         }
@@ -61,9 +61,9 @@ class UploadController extends BaseController
         $img->move($destination, $img->getRandomName());
         $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
         return redirect()->back();
-        */
+        
 
-        // Versi #3
+        /* // Versi #3
         if ($this->validate($validationRule)) {
             $newName = $img->getRandomName();
     
@@ -76,5 +76,26 @@ class UploadController extends BaseController
 
             return redirect()->back();
         }
+        */
     }
+
+    public function listUploadedImages() {
+        // Path ke direktori 'uploads'
+        $uploadDirectory = WRITEPATH . 'uploads/';
+    
+        // Mendapatkan daftar semua file dalam direktori 'uploads'
+        $files = scandir($uploadDirectory);
+    
+        // Filter hanya file gambar (misalnya, jpg, jpeg, png)
+        $imageFiles = array_filter($files, function($file) {
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+            return in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif', 'webp']);
+        });
+    
+        // Kirim daftar file gambar ke tampilan
+        $data['imageFiles'] = $imageFiles;
+    
+        return view('image_list', $data);
+    }
+    
 }
