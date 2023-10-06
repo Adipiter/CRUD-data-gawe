@@ -4,6 +4,7 @@
     <title>Upload file</title>
 </head>
 <body>
+    <a href="list-images">Lihat daftar</a>
     <p>
         <?php foreach ($errors as $error): ?>
             <li><?= esc($error) ?></li>

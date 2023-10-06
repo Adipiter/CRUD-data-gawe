@@ -71,7 +71,7 @@ $routes->get('joindata-select', 'Joindata::select');
 /** Membuat route untuk Upload data, misalnya gambar */
 $routes->get('upload', 'UploadController::index');
 $routes->post('upload', 'UploadController::upload');
-$routes->get('list-images', 'UploadController::listUploadedImages');
+$routes->get('list-images', 'UploadController::ListImages');
 
 
 /*
