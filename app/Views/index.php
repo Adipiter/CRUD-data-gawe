@@ -23,5 +23,18 @@
         <li><a href="dashboard">Dashboard</a></li>
         <li><a href="logout">Logout</a></li>
     </ul>
+
+    <ol>Pengolahan API</ol>
+    <ul>
+        <li><a href="wibupage2">Wibu page2</a></li>
+        <li><a href="saldo">Saldo</a></li>
+        <li><a href="digi">Digiflazz</a></li>
+    </ul>
+
+    <ol>Upload</ol>
+    <ul>
+        <li><a href="upload">Upload (hanya upload tanpa database)</a></li>
+    </ul>
+
 </body>
 </html>

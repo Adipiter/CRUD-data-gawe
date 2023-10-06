@@ -35,31 +35,33 @@ class UploadController extends BaseController
         // Sesuaikan name yang ada di 'form-upload'
         $img = $this->request->getFile('userfile');
 
-        // Versi #1
-        // if ($this->validate($validationRule)) {
-        //     if (!$img->hasMoved()) {
-        //         $destination = WRITEPATH . 'uploads/';
-        //         $img->move($destination, $img->getRandomName());
-        //         $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
-        //     } else {
-        //         return view('upload-form', ['errors' => ['The file has already been moved.']]);
-        //     }
-        // } else {
-        //     return view('upload-form', ['errors' => $this->validator->getErrors()]);
-        // }
-        // return redirect()->to('upload');
+        /*  Versi #1
+        if ($this->validate($validationRule)) {
+            if (!$img->hasMoved()) {
+                $destination = WRITEPATH . 'uploads/';
+                $img->move($destination, $img->getRandomName());
+                $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
+            } else {
+                return view('upload-form', ['errors' => ['The file has already been moved.']]);
+            }
+        } else {
+            return view('upload-form', ['errors' => $this->validator->getErrors()]);
+        }
+        return redirect()->to('upload');
+        */
 
-        // Versi #2
-        // if (!$this->validate($validationRule)) {
-        //     return view('upload-form', ['errors' => $this->validator->getErrors()]);
-        // }
-        // if ($img->hasMoved()) {
-        //     return view('upload-form', ['errors' => ['The file has already been moved.']]);
-        // }
-        // $destination = WRITEPATH . 'uploads/';
-        // $img->move($destination, $img->getRandomName());
-        // $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
-        // return redirect()->back();
+        /*  Versi #2
+        if (!$this->validate($validationRule)) {
+            return view('upload-form', ['errors' => $this->validator->getErrors()]);
+        }
+        if ($img->hasMoved()) {
+            return view('upload-form', ['errors' => ['The file has already been moved.']]);
+        }
+        $destination = WRITEPATH . 'uploads/';
+        $img->move($destination, $img->getRandomName());
+        $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
+        return redirect()->back();
+        */
 
         // Versi #3
         if ($this->validate($validationRule)) {
