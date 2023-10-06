@@ -32,6 +32,7 @@ class UploadController extends BaseController
             ],
         ];
 
+        // Sesuaikan name yang ada di 'form-upload'
         $img = $this->request->getFile('userfile');
 
         // Versi #1
