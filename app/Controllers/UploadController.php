@@ -49,15 +49,16 @@ class UploadController extends BaseController
         // return redirect()->to('upload');
 
         // Versi #2
-        if ($this->validate($validationRule)) {
-            $img = $this->request->getFile('userfile');
-            $newName = $img->getRandomName();
-            $destination = WRITEPATH . 'uploads/';
-            $img->move($destination, $newName);
-            $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
-        }else{
+        if (!$this->validate($validationRule)) {
             return view('upload-form', ['errors' => $this->validator->getErrors()]);
         }
+        if ($img->hasMoved()) {
+            return view('upload-form', ['errors' => ['The file has already been moved.']]);
+        }
+        $destination = WRITEPATH . 'uploads/';
+        $img->move($destination, $img->getRandomName());
+        $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
+        
         return redirect()->to('upload');
     }
 }
