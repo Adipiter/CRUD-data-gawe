@@ -24,8 +24,13 @@ class ProfileController extends Controller
     public function profileUpload()
     {
         $fotoProfile = $this->request->getFile('foto');
-    
-        if ($fotoProfile && $fotoProfile->isValid() && $fotoProfile->getExtension() == 'png') {
+
+        // Validasi gambar
+        $validasi =  $fotoProfile && 
+                        $fotoProfile->isValid() && 
+                        $fotoProfile->getExtension() == 'png' || 'jpg' || 'jpeg' || 'gif';
+        
+        if ($validasi) {
             // Tentukan direktori tempat menyimpan foto profil
             $uploadPath = ROOTPATH . 'public/logo/';
             
