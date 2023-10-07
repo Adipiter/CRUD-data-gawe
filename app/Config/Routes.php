@@ -73,9 +73,6 @@ $routes->get('upload', 'UploadController::index');
 $routes->post('upload', 'UploadController::upload');
 $routes->get('list-images', 'UploadController::ListImages');
 
-$routes->get('do_upload', 'DoUpload::index');
-$routes->post('upload/do_upload', 'DoUpload::do_upload');
-
 $routes->get('profile', 'ProfileController::index');
 $routes->post('profile-upload', 'ProfileController::profileUpload');
 

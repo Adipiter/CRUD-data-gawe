@@ -6,13 +6,9 @@ use CodeIgniter\Model;
 
 class ProfileModel extends Model
 {
-    protected $table = 'profile'; // Gantilah 'logo' dengan nama tabel sesuai kebutuhan Anda.
-    protected $primaryKey = 'id'; // Gantilah 'id' dengan nama kolom yang menjadi primary key di tabel.
+    protected $table = 'profile';
+    protected $primaryKey = 'id';
 
-    protected $allowedFields = ['filename']; // Gantilah 'filename' sesuai dengan kolom yang akan diisi dengan nama file logo.
+    protected $allowedFields = ['filename'];
 
-    // Jika Anda ingin menggunakan timestamps (created_at dan updated_at), Anda bisa mengaktifkannya dengan kode berikut:
-    // protected $useTimestamps = true;
-    // protected $createdField  = 'created_at';
-    // protected $updatedField  = 'updated_at';
 }
