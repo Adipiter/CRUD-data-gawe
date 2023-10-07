@@ -17,6 +17,7 @@ class UploadController extends BaseController
         return view('upload-form', ['errors' => []]);
     }
 
+    /** Untuk Path nya bisa menggunakan WRITEPATH atau ROOTPATH folder public saja. */
     public function upload()
     {
         $validationRule = [
@@ -40,6 +41,19 @@ class UploadController extends BaseController
             if (!$img->hasMoved()) {
                 $destination = WRITEPATH . 'uploads/';
                 $img->move($destination, $img->getRandomName());
+
+                // Simpan informasi file ke database di sini
+                $fileData = [
+                    'file_name' => $img->getName(), // Nama file
+                    'file_path' => $filepath,       // Path file
+                    'upload_date' => date('Y-m-d H:i:s'), // Tanggal upload
+                ];
+
+                // Simpan data ke database (gantilah ini dengan kode yang sesuai dengan framework/database yang Anda gunakan)
+                $this->yourDatabaseModel->insert($fileData);
+
+                $data = ['uploaded_fileinfo' => new File($filepath)];
+                
                 $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
             } else {
                 return view('upload-form', ['errors' => ['The file has already been moved.']]);
@@ -57,7 +71,7 @@ class UploadController extends BaseController
         if ($img->hasMoved()) {
             return view('upload-form', ['errors' => ['The file has already been moved.']]);
         }
-        $destination = WRITEPATH . 'uploads/';
+        $destination = ROOTPATH . 'public/';
         $img->move($destination, $img->getRandomName());
         $this->session->setFlashdata('success_message', 'File berhasil diunggah.');
         return redirect()->back();
@@ -94,68 +108,5 @@ class UploadController extends BaseController
         $data['imageFiles'] = $imageFiles;
 
         return view('imageTampil', $data);
-    }
-
-    public function uploadtodb()
-    {
-        // Lakukan validasi seperti yang telah Anda lakukan sebelumnya
-        $validationRule = [
-            'userfile' => [
-                'label' => 'Image File',
-                'rules' => [
-                    'uploaded[userfile]',
-                    'is_image[userfile]',
-                    'mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
-                    'max_size[userfile,100]',
-                    'max_dims[userfile,1024,768]',
-                ],
-            ],
-        ];
-
-        if (! $this->validate($validationRule)) {
-            $data = ['errors' => $this->validator->getErrors()];
-
-            return view('upload_form', $data);
-        }
-
-        $img = $this->request->getFile('userfile');
-
-        if (! $img->hasMoved()) {
-            // Simpan informasi gambar ke database
-            $filename = $img->getName();
-            $description = $this->request->getPost('description'); // Deskripsi gambar (jika ada)
-
-            // Simpan informasi ke database (gunakan model atau Query Builder)
-            $data = [
-                'filename' => $filename,
-                'description' => $description,
-                'uploaded_at' => date('Y-m-d H:i:s')
-            ];
-
-            // Contoh penggunaan Query Builder
-            $this->db->table('uploaded_images')->insert($data);
-
-            // Lanjutkan dengan memindahkan file ke direktori 'uploads'
-            $filepath = WRITEPATH . 'uploads/' . $img->store();
-
-            $data = ['uploaded_fileinfo' => new File($filepath)];
-
-            return view('upload_success', $data);
-        }
-
-        $data = ['errors' => ['The file has already been moved.']];
-
-        return view('upload_form', $data);
-    }
-
-    // Tampilkan daftar gambar dari database
-    public function listImagesdb()
-    {
-        // Ambil data gambar dari database (gunakan model atau Query Builder)
-        $images = $this->db->table('uploaded_images')->get()->getResult();
-
-        $data['images'] = $images;
-
-        return view('image_list', $data);
     }
 }

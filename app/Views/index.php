@@ -34,7 +34,7 @@
     <ol>Upload</ol>
     <ul>
         <li><a href="upload">Upload (hanya upload tanpa database)</a></li>
-        <li><a href="uploadtodb">Upload ke database</a></li>
+        <li><a href="profile">Upload ke database</a></li>
     </ul>
 
 </body>
