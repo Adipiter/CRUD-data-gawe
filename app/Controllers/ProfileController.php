@@ -11,7 +11,14 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile_form');
+        $builder = new ProfileModel();
+        $query = $builder->select('filename')->first();
+        
+        // Ubah hasil menjadi array
+        $data['filename'] = $query;
+        
+        // Kirim data ke tampilan 'profile_form'
+        return view('profile_form', $data);
     }
 
     public function profileUpload()
@@ -33,22 +40,19 @@ class ProfileController extends Controller
             // Pindahkan file foto profil ke direktori yang ditentukan
             $fotoProfile->move($uploadPath, $fileName);
     
-            // Simpan nama file foto profil ke database atau sesuai kebutuhan
-            $ProfileModel = new ProfileModel();
-
-            // kolom ID yang akan Anda ubah (misalnya, ID 1)
-            $userIdToModify = 1;
-
             // Instansiasi Model
             $ProfileModel = new ProfileModel();
 
+            // kolom ID yang akan Anda ubah (misalnya, ID 1)
+            $modifikasi = 1;
+
             // Cek apakah profil sudah ada untuk ID yang ditentukan
-            $profileAda = $ProfileModel->where('id', $userIdToModify)->first();
+            $profileAda = $ProfileModel->where('id', $modifikasi)->first();
 
             if ($profileAda) {
                 // Ambil nama file yang akan dihapus
                 $oldFileName = $profileAda['filename'];
-
+                
                 // Hapus file lama sebelum menyimpan yang baru
                 unlink(ROOTPATH . 'public/logo/' . $oldFileName);
 
@@ -56,7 +60,7 @@ class ProfileController extends Controller
                 $ProfileModel->update($profileAda['id'], ['filename' => $fileName]);
             } else {
                 // Jika tidak ada profil, buat profil baru untuk ID yang ditentukan
-                $ProfileModel->insert(['id' => $userIdToModify, 'filename' => $fileName]);
+                $ProfileModel->insert(['id' => 1, 'filename' => $fileName]);
             }
 
             return redirect()->to('profile')->with('success', 'Foto profil berhasil diunggah');
