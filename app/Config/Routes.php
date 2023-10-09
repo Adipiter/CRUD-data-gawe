@@ -76,6 +76,9 @@ $routes->get('list-images', 'UploadController::ListImages');
 $routes->get('profile', 'ProfileController::index');
 $routes->post('profile-upload', 'ProfileController::profileUpload');
 
+/** Membuat route untuk segmentasi blog */
+$routes->get('blog', 'BlogController::index');
+$routes->get('blog/(:segment)', 'BlogController::blogdetail/$1');
 
 /*
  * --------------------------------------------------------------------
