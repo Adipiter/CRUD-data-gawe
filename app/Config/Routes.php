@@ -80,6 +80,9 @@ $routes->post('profile-upload', 'ProfileController::profileUpload');
 $routes->get('blog', 'BlogController::index');
 $routes->get('blog/(:segment)', 'BlogController::blogdetail/$1');
 
+/** Membuat route untuk callback (Tripay), jangan lupa sesuaikan HTTP method nya */
+$routes->post('callback', 'CallbackController::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
