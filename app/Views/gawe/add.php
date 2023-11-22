@@ -20,8 +20,16 @@
             <input type="text" name="name_gawe" class="form-control">
         </div>
         <div class="form-group">
-        <label>Tanggal gawe</label>
+            <label>Tanggal gawe</label>
             <input type="date" name="date_gawe" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Buah</label>
+            <select name="opsi" class="form-control">
+                <?php foreach ($buah as $buahs) : ?>
+                <option value="<?= $buahs['option']; ?>"><?= $buahs['option']; ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
             <label>Info</label>

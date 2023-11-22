@@ -22,6 +22,10 @@ class Gawe extends Migration
             'date_gawe' => [
                 'type' => 'DATE',
             ],
+            'option' => [
+                'type' => 'VARCHAR',
+                'constraint'     => 100
+            ],
             'info_gawe' => [
                 'type' => 'TEXT',
                 'null' => true,

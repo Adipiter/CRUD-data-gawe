@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\OpsiModel;
 
 class Gawe extends BaseController
 {
     public function index()
-    {   
+    {
         // cara 1 query builder
         $builder = $this->db->table('gawe');
         $query = $builder->get()->getResult();
@@ -19,7 +20,10 @@ class Gawe extends BaseController
     }
 
     public function create(){
-        return view('gawe/add');
+        $opsimodel = new OpsiModel();
+        $data['buah'] = $opsimodel->findAll();
+
+        return view('gawe/add', $data);
     }
 
     public function store(){
@@ -31,6 +35,7 @@ class Gawe extends BaseController
             'name_gawe' => $this->request->getVar('name_gawe'),
             'date_gawe' => $this->request->getVar('date_gawe'),
             'info_gawe' => $this->request->getVar('info_gawe'),
+            'option' => $this->request->getVar('opsi'),
         ];
 
         $this->db->table('gawe')->insert($data);
