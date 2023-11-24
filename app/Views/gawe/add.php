@@ -25,9 +25,9 @@
         </div>
         <div class="form-group">
             <label>Buah</label>
-            <select name="opsi" class="form-control">
+            <select name="buah" class="form-control">
                 <?php foreach ($buah as $buahs) : ?>
-                <option value="<?= $buahs['option']; ?>"><?= $buahs['option']; ?></option>
+                <option value="<?= $buahs['id']; ?>"><?= $buahs['option']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

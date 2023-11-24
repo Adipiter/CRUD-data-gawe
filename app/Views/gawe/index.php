@@ -25,7 +25,7 @@
         Error, ada masalah!
     </div>
     <?php endif; ?>
-
+    <?php $counter = 1; ?>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -33,6 +33,7 @@
                 <th scope="col">Nama gawe</th>
                 <th scope="col">Tanggal</th>
                 <th scope="col">Info</th>
+                <th scope="col">Buah favorite</th>
                 <th scope="col">Aksi</th>
             </tr>
         </thead>
@@ -40,11 +41,11 @@
             <?php foreach ($gawe as $key => $value) : ?>
             <!-- <?= var_dump($value); ?> -->
             <tr>
-                <th><?= $key= +1; ?></th>
+                <th><?= $counter++; ?></th>
                 <td><?= $value->name_gawe; ?></td>
                 <td><?= date('d/m/Y', strtotime($value->date_gawe)); ?></td>
                 <td><?= $value->info_gawe; ?></td>
-
+                <td><?= $value->buah; ?></td>
                 <td>
                     <div class="d-grid gap-2 d-md-block text-center">
                         <a href="<?= base_url('gawe/edit/'.$value->id_gawe); ?>" class="btn btn-primary btn-sm">Edit</a>

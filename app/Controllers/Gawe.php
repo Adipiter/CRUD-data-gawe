@@ -28,14 +28,14 @@ class Gawe extends BaseController
 
     public function store(){
         //cara 1 name sama
-        $data = $this->request->getPost();
+        // $data = $this->request->getPost();
 
         //cara 2 name spesific
         $data = [
             'name_gawe' => $this->request->getVar('name_gawe'),
             'date_gawe' => $this->request->getVar('date_gawe'),
             'info_gawe' => $this->request->getVar('info_gawe'),
-            'option' => $this->request->getVar('opsi'),
+            'buah' => $this->request->getVar('buah'),
         ];
 
         $this->db->table('gawe')->insert($data);
@@ -70,6 +70,7 @@ class Gawe extends BaseController
             'name_gawe' => $this->request->getVar('name_gawe'),
             'date_gawe' => $this->request->getVar('date_gawe'),
             'info_gawe' => $this->request->getVar('info_gawe'),
+            'buah' => $this->request->getVar('buah'),
         ];
 
         $this->db->table('gawe')->where(['id_gawe' => $id])->update($data);

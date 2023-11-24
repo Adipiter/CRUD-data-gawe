@@ -22,7 +22,7 @@ class Gawe extends Migration
             'date_gawe' => [
                 'type' => 'DATE',
             ],
-            'option' => [
+            'buah' => [
                 'type' => 'VARCHAR',
                 'constraint'     => 100
             ],
