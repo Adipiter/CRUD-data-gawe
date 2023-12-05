@@ -6,8 +6,15 @@ use CodeIgniter\Model;
  
 class UserModel extends Model
 {
-    protected $table = 'users';
- 
+    protected $DBGroup          = 'default';
+    protected $table            = 'users';
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
+    protected $protectFields    = true;
+    protected $allowedFields    = ['id_user', 'name_user', "email_user", "password_user", "info_user"];
+
     public function getUsers()
     {
         return $this->findAll();

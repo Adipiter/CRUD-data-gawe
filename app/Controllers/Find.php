@@ -33,4 +33,23 @@ class Find extends BaseController
         return view('find', $data); // Lempar data ke view
     }
     */
+
+    public function paging()
+    {
+        $member = new UserModel();
+    
+        // Konfigurasi paginasi
+        $pager = \Config\Services::pager(); // Mendapatkan instance Pager
+        $perPage = 10; // Jumlah item per halaman
+    
+        // Mendapatkan data dengan menggunakan paginasi
+        $data = [
+            'members' => $member->paginate($perPage),
+            'pager' => $member->pager,
+        ];
+
+        // Menampilkan data ke view
+        return view('paginate', $data);
+    }
+    
 }

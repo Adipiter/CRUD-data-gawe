@@ -40,6 +40,9 @@ $routes->delete('gawe/delete/(:num)', 'Gawe::destroy/$1');
 
 $routes->get('find', 'Find::index');
 
+//  Membuat Pagination
+$routes->get('finddata', 'Find::paging');
+
 $routes->match(['get', 'post'], 'register', 'Auth::register');
 
 // Route login dengan querybuilder lebih ringkas
