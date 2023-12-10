@@ -86,6 +86,9 @@ $routes->get('blog/(:segment)', 'BlogController::blogdetail/$1');
 /** Membuat route untuk callback (Tripay), jangan lupa sesuaikan HTTP method nya */
 $routes->post('callback', 'CallbackController::index');
 
+/** Membuat route untuk lempar data antar function */
+$routes->get('fungsi', 'LemparTangkap::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
